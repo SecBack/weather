@@ -1863,7 +1863,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    axios__WEBPACK_IMPORTED_MODULE_0___default().get("https://cors-anywhere.herokuapp.com/https://samples.openweathermap.org/data/2.5/box/city?bbox=12,32,15,37,10&appid=439d4b804bc8187953eb36d2a8c26a02").then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default().get("https://yacdn.org/proxy/https://samples.openweathermap.org/data/2.5/box/city?bbox=12,32,15,37,10&appid=439d4b804bc8187953eb36d2a8c26a02").then(function (response) {
       var dbData = response.data['list'];
       dbData.forEach(function (element) {
         console.log(element.name);

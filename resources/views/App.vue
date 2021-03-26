@@ -14,7 +14,7 @@ export default {
     }
   },
   mounted() {
-    axios.get("https://cors-anywhere.herokuapp.com/https://samples.openweathermap.org/data/2.5/box/city?bbox=12,32,15,37,10&appid=439d4b804bc8187953eb36d2a8c26a02")
+    axios.get("https://yacdn.org/proxy/https://samples.openweathermap.org/data/2.5/box/city?bbox=12,32,15,37,10&appid=439d4b804bc8187953eb36d2a8c26a02")
       .then((response) => {
         let dbData = response.data['list']
 
