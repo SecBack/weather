@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\DataStoreRequest;
-use App\Data;
+use App\Models\Data;
 
 class DataController extends Controller
 {
@@ -14,7 +14,7 @@ class DataController extends Controller
      */
     public function index()
     {
-        //
+        return Data::all();
     }
 
     /**
@@ -37,7 +37,7 @@ class DataController extends Controller
     {
         $validated = $request->validated();
 
-        
+        $data = Data::updateOrCreate($validated);
 
         return $validated;
     }

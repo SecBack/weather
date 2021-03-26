@@ -18,4 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('data', 'App\Http\Controllers\DataController')->only(['store']);
+Route::apiResource('data', 'App\Http\Controllers\DataController')->only(['index', 'store']);

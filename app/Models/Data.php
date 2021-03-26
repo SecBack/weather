@@ -7,7 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Data extends Model
 {
-    protected $hidden = ['created_at', 'updated_at'];
+    protected $hidden = ['id', 'created_at', 'updated_at'];
 
-    
+
+    protected $fillable = [
+        'name', 'temp', 'prediction', 'description',
+    ];
 }

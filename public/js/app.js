@@ -1853,8 +1853,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -1866,15 +1864,22 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios__WEBPACK_IMPORTED_MODULE_0___default().get("https://cors-anywhere.herokuapp.com/https://samples.openweathermap.org/data/2.5/box/city?bbox=12,32,15,37,10&appid=439d4b804bc8187953eb36d2a8c26a02").then(function (response) {
-      _this.data = response.data['list'];
+      var dbData = response.data['list'];
+      dbData.forEach(function (element) {
+        console.log(element.name);
+        console.log(element.main.temp);
+        console.log(element['weather'][0].main);
+        console.log(element.weather[0].description);
+        axios__WEBPACK_IMPORTED_MODULE_0___default().post("api/data", {
+          name: element.name,
+          temp: element.main.temp,
+          prediction: element['weather'][0].main,
+          description: element.weather[0].description
+        });
+      });
     });
-    axios__WEBPACK_IMPORTED_MODULE_0___default().post("api/data", {
-      name: "test",
-      temp: 9.002384,
-      prediction: "test prediction",
-      description: "test description"
-    }).then(function (response) {
-      console.log(response.data);
+    axios__WEBPACK_IMPORTED_MODULE_0___default().get("api/data").then(function (response) {
+      _this.data = response.data;
     });
   },
   methodes: function methodes() {}
@@ -48210,12 +48215,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    [
-      _c("b-button", { attrs: { variant: "outline-primary" } }, [
-        _vm._v("Update database")
-      ]),
-      _vm._v("\r\n\r\n  " + _vm._s(_vm.data) + "\r\n")
-    ],
+    [_c("b-table", { attrs: { striped: "", hover: "", items: _vm.data } })],
     1
   )
 }
