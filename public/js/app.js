@@ -1853,11 +1853,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      data: ""
+      data: "",
+      fields: [{
+        key: 'name',
+        sortable: true
+      }, {
+        key: 'temp',
+        sortable: true
+      }, {
+        key: 'prediction',
+        sortable: false
+      }, {
+        key: 'description',
+        sortable: false
+      }]
     };
   },
   mounted: function mounted() {
@@ -1865,8 +1883,7 @@ __webpack_require__.r(__webpack_exports__);
 
     axios__WEBPACK_IMPORTED_MODULE_0___default().get("api/data").then(function (response) {
       _this.data = response.data;
-    }); //https://yacdn.org/proxy/https://samples.openweathermap.org/data/2.5/box/city?bbox=12,32,15,37,10&appid=439d4b804bc8187953eb36d2a8c26a02
-
+    });
     axios__WEBPACK_IMPORTED_MODULE_0___default().get("https://cors.bridged.cc/https://samples.openweathermap.org/data/2.5/box/city?bbox=12,32,15,37,10&appid=439d4b804bc8187953eb36d2a8c26a02").then(function (response) {
       var dbData = response.data['list'];
       dbData.forEach(function (element) {
@@ -48216,7 +48233,11 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    [_c("b-table", { attrs: { striped: "", hover: "", items: _vm.data } })],
+    [
+      _c("b-table", {
+        attrs: { striped: "", hover: "", items: _vm.data, fields: _vm.fields }
+      })
+    ],
     1
   )
 }
